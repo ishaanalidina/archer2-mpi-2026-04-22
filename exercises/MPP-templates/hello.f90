@@ -4,8 +4,12 @@ program hello
 
   implicit none
 
-  integer :: ierr, rank, size, len, namelen
+  integer :: ierr, rank, size, len, namelen, i, N
   character*(MPI_MAX_PROCESSOR_NAME) :: procname
+  double precision :: pival, val
+
+  N = 840
+  pival = 0.0
 
   call MPI_Init(ierr)
 
@@ -13,7 +17,14 @@ program hello
 
   call MPI_COMM_RANK(MPI_COMM_WORLD, rank, ierr)
 
-  write(*,*) 'Hello World from rank: ', rank, 'of machine: ', procname(1:namelen)
+  do i = 1, N
+        val = (i - 0.5) / N
+        pival = pival +  1.0 / (1.0 + val * val)
+  end do
+
+  pival = (4.0 / N) * pival
+
+  write(*,*) 'Value for pi from rank: ', rank, 'of machine: ', procname(1:namelen), " : ", pival
 
   call MPI_Finalize(ierr)
 
