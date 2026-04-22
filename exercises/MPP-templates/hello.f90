@@ -6,10 +6,10 @@ program hello
 
   integer :: ierr, rank, size, len, namelen, i, N, startidx, endidx
   character*(MPI_MAX_PROCESSOR_NAME) :: procname
-  double precision :: pival, val, pival_temp
+  double precision :: pival, val, pival_temp, timestart, timeend
   integer :: status(MPI_STATUS_SIZE)
 
-  N = 840
+  N = 2000
   pival = 0.0
 
   call MPI_Init(ierr)
@@ -19,6 +19,9 @@ program hello
   call MPI_COMM_RANK(MPI_COMM_WORLD, rank, ierr)
 
   call MPI_COMM_SIZE(MPI_COMM_WORLD, size, ierr)
+
+  call MPI_Barrier(MPI_COMM_WORLD, ierr)
+  timestart = MPI_Wtime()
 
   startidx = rank * N / size
   endidx = (rank + 1) * N / size
@@ -44,8 +47,12 @@ if (size .gt. 1) then
   end if
 end if
 
+call MPI_Barrier(MPI_COMM_WORLD, ierr)
+timeend = MPI_Wtime()
+
 if (rank .eq. 0) then
   write(*, *) "Evaluation of pi on rank 0: ", pival
+  write(*, *) "Time required: ", timeend - timestart
 end if
 
   call MPI_Finalize(ierr)
