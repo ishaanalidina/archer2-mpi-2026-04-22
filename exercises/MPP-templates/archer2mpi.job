@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Slurm job options (name, compute nodes, job time)
+#SBATCH --ntasks=4
+#SBATCH --nodes=1
+#SBATCH --job-name=hello
+#SBATCH --time=00:01:00
+#SBATCH --output=%x-%j.out
+#SBATCH --cpus-per-task=1
+#SBATCH --partition=standard
+#SBATCH --tasks-per-node=128
+# Replace [budget code] below with your budget code
+# This is commented out so it will use the default project budget
+##SBATCH --account=taXXX-username
+
+## The commands below select the short queue for small jobs
+## For long or large jobs, use --qos=standard and omit the reservation
+##
+##SBATCH --qos=short
+##SBATCH --reservation=shortqos
+
+# The commands below select the reserved queue for the ARCHER2 MPI course
+# from 22-23 Apr 2026
+# Outside of course hours use short or standard jobs as described above
+
+#SBATCH --qos=reservation
+#For Wed 22nd
+#SBATCH --reservation=ta232_1753782
+
+##For Thurs 23rd
+##SBATCH --reservation=ta232_1753788
+
+# Set the number of threads to 1
+#   This prevents any threaded system libraries from automatically
+#   using threading.
+
+export OMP_NUM_THREADS=1
+
+# Use "srun" to launch the job
+
+srun --unbuffered --distribution=block:block --hint=nomultithread ./hello
