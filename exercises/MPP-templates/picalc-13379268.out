@@ -1,0 +1,6 @@
+ Contribution to pi calculated from rank:  0 of machine: nid006766 :  0.9799147930392561
+ Contribution to pi calculated from rank:  1 of machine: nid006766 :  0.87467585528708536
+ Contribution to pi calculated from rank:  2 of machine: nid006766 :  0.71941400517721021
+ Contribution to pi calculated from rank:  3 of machine: nid006766 :  0.56758819439907526
+slurmstepd: error: *** STEP 13379268.0 ON nid006766 CANCELLED AT 2026-04-22T16:08:09 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 13379268 ON nid006766 CANCELLED AT 2026-04-22T16:08:09 DUE TO TIME LIMIT ***

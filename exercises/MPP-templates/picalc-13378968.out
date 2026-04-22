@@ -1,0 +1,7 @@
+ Contribution to pi calculated from rank:  0 of machine: nid006764 :  3.1415928479026274
+MPICH ERROR [Rank 0] [job id 13378968.0] [Wed Apr 22 15:46:10 2026] [nid006764] - Abort(873056262) (rank 0 in comm 0): Fatal error in PMPI_Recv: Invalid rank, error stack:
+PMPI_Recv(177): MPI_Recv(buf=0x404570, count=1, MPI_DOUBLE_PRECISION, src=1, tag=0, MPI_COMM_WORLD, status=0x404640) failed
+PMPI_Recv(108): Invalid rank has value 1 but must be nonnegative and less than 1
+
+srun: error: nid006764: task 0: Exited with exit code 6
+srun: launch/slurm: _step_signal: Terminating StepId=13378968.0

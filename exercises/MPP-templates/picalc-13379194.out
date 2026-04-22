@@ -1,0 +1,4 @@
+ Contribution to pi calculated from rank:  0 of machine: nid006766 :  3.1415928479026274
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 13379194.0 ON nid006766 CANCELLED AT 2026-04-22T16:01:53 ***
+slurmstepd: error: *** JOB 13379194 ON nid006766 CANCELLED AT 2026-04-22T16:01:53 ***
