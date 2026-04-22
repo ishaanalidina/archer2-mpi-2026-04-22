@@ -3,7 +3,7 @@
 # Slurm job options (name, compute nodes, job time)
 #SBATCH --ntasks=4
 #SBATCH --nodes=1
-#SBATCH --job-name=hello
+#SBATCH --job-name=picalc
 #SBATCH --time=00:01:00
 #SBATCH --output=%x-%j.out
 #SBATCH --cpus-per-task=1
