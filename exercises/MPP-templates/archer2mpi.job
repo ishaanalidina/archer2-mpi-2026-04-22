@@ -25,10 +25,10 @@
 
 #SBATCH --qos=reservation
 #For Wed 22nd
-#SBATCH --reservation=ta232_1753782
+##SBATCH --reservation=ta232_1753782
 
 ##For Thurs 23rd
-##SBATCH --reservation=ta232_1753788
+#SBATCH --reservation=ta232_1753788
 
 # Set the number of threads to 1
 #   This prevents any threaded system libraries from automatically
