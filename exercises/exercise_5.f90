@@ -5,6 +5,7 @@ use mpi
 implicit none
 
 integer :: ierror, rank, len, size, tempval, globalsum, totalsteps, status(MPI_STATUS_SIZE), request, neighbour_back, neighbour_forward, idx, tag, comm
+double precision :: tstart, tend
 
 ! Initialising MPI, and getting the number of processes and the process ID of each rank.
 
@@ -17,9 +18,12 @@ call MPI_COMM_SIZE(comm, size, ierror)
 
 call MPI_COMM_RANK(comm, rank, ierror)
 
+call MPI_Barrier(comm, ierror)
+tstart = MPI_Wtime()
+
 totalsteps = size - 1
-! tempval = rank
-tempval = (rank + 1) ** 2
+tempval = rank
+! tempval = (rank + 1) ** 2
 globalsum = tempval
 
 ! Defining the neighbours to each rank, as these should remain unchanged throughout the operation.
@@ -50,6 +54,15 @@ do idx = 1, totalsteps
 
 end do
 
+call MPI_Barrier(comm, ierror)
+tend = MPI_Wtime()
+
 write(*, *) "Global sum from rank: ", rank, " is: ", globalsum
+
+if (rank .eq. 0) then
+    
+    write(*, *) "Time required: ", tend - tstart
+
+end if
 
 end program
