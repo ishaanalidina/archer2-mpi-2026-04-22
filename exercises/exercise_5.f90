@@ -20,7 +20,7 @@ call MPI_COMM_RANK(comm, rank, ierror)
 totalsteps = size - 1
 ! tempval = rank
 tempval = (rank + 1) ** 2
-globalsum = (rank + 1) ** 2
+globalsum = tempval
 
 ! Defining the neighbours to each rank, as these should remain unchanged throughout the operation.
 
